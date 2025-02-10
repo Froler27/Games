@@ -58,9 +58,9 @@ public class TetrisBlock
     };
 
     // Start is called before the first frame update
-    public TetrisBlock()
+    public TetrisBlock(Vector3 pos)
     {
-        position = new Vector3(0, 1, 0);
+        position = pos;
         blockType = (BlockType)Random.Range(0, 7);
         switch (blockType)
         {
@@ -111,22 +111,12 @@ public class TetrisBlock
 
     public void RotateClockwise()
     {
-        int tempState = state;
         state = (state + 1) % maxState;
-        if (!IsValid())
-        {
-            state = tempState;
-        }
     }
 
     public void RotateCounterClockwise()
     {
-        int tempState = state;
         state = (state - 1 + maxState) % maxState;
-        if (!IsValid())
-        {
-            state = tempState;
-        }
     }
 
     public void MoveLeft()
